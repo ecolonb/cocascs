@@ -1,6 +1,8 @@
 {
   "name": "cocascs",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular",
   "id": "11142d45"
 }

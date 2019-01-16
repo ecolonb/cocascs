@@ -9,42 +9,43 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'tab1',
+        path: 'notifications',
         children: [
           {
             path: '',
-            loadChildren: '../tab1/tab1.module#Tab1PageModule'
+            loadChildren:
+              '../notifications/notifications.module#NotificationsPageModule'
           }
         ]
       },
       {
-        path: 'tab2',
+        path: 'messages',
         children: [
           {
             path: '',
-            loadChildren: '../tab2/tab2.module#Tab2PageModule'
+            loadChildren: '../messages/messages.module#MessagesPageModule'
           }
         ]
       },
       {
-        path: 'tab3',
+        path: 'orders',
         children: [
           {
             path: '',
-            loadChildren: '../tab3/tab3.module#Tab3PageModule'
+            loadChildren: '../orders/orders.module#OrdersPageModule'
           }
         ]
       },
       {
         path: '',
-        redirectTo: '/tabs/tab1',
+        redirectTo: '/tabs/notifications',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs/tab1',
+    redirectTo: '/tabs/notifications',
     pathMatch: 'full'
   }
 ];
