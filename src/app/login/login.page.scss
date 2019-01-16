@@ -1,0 +1,40 @@
+.iconLogin {
+  margin-right: 10px;
+}
+.containerLogin {
+  display: block;
+  background-color: #1d4a60;
+  width: 100% !important;
+  height: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+.input {
+  background-color: #0e2d3f;
+  width: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+.text {
+  color: #43cbbd;
+}
+
+.btnLogin {
+  text-transform: initial;
+  color: rgb(252, 250, 250);
+  font-size: 18px;
+}
+.item-input:hover,
+.item-input:active {
+  border-bottom: 1px solid #43cbbd;
+  font-size: 20px;
+}
+.forgotPassword {
+  position: relative;
+
+  display: inline-block;
+  width: 48%;
+  text-align: center;
+  text-decoration: none !important;
+  color: #43cbbd;
+}

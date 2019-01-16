@@ -1,0 +1,67 @@
+<ion-content>
+  <div class="containerLogin" padding>
+    <ion-grid>
+      <ion-row justify-content-center style="padding: 15px;">
+        <ion-col align-self-center size-md="8" size-lg="4" size-xs="12">
+          <img
+            style="width: 90%;margin-left: 7%;"
+            src="../../assets/cocascslogo2.png"
+            alt=""
+          />
+        </ion-col>
+      </ion-row>
+      <ion-row justify-content-center style="padding: 15px;">
+        <ion-col align-self-center size-md="8" size-lg="4" size-xs="12">
+          <!-- <div text-center><h4 class="text">Cocas CS</h4></div> -->
+          <ion-item lines="none" color="dark" class="item-input">
+            <ion-icon name="ios-contact" class="iconLogin text"></ion-icon>
+            <ion-input
+              type="text"
+              [(ngModel)]="userName"
+              placeholder="Usuario"
+              color="secondary"
+            ></ion-input>
+          </ion-item>
+
+          <ion-item lines="none" color="dark" class="item-input">
+            <ion-icon name="md-key" class="iconLogin text"></ion-icon>
+            <ion-input
+              type="password"
+              placeholder="Contraseña"
+              [(ngModel)]="password"
+              (keypress)="keyPressValidate($event)"
+              color="secondary"
+            ></ion-input>
+          </ion-item>
+          <div style="padding-top: 20px;">
+            <ion-button
+              class="btnLogin text"
+              color="secondary"
+              size="default"
+              expand="full"
+              (click)="login()"
+              >Entrar</ion-button
+            >
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <div
+    style="position: absolute;bottom: 3%;display: block;text-align: center;width: 90%;margin:auto;"
+  >
+    <a
+      class="forgotPassword"
+      style="text-align: right;width: 41%;"
+      [routerLink]="['/registry']"
+      >Registro</a
+    >
+    <span class="text"> / </span>
+    <a
+      class="forgotPassword"
+      style="text-align: left;"
+      [routerLink]="['/recovery-password']"
+      >Recuperar contaseña</a
+    >
+  </div>
+</ion-content>
