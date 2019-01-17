@@ -4,12 +4,13 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class AreaService {
-  // private _URL = 'https://cocascs.herokuapp.com/api';
-  private _URL = 'http://localhost:2786/api';
+  private _URL = 'http://cocascs.herokuapp.com/api';
+  // private _URL = 'http://localhost:2786/api';
   constructor(public httpClient: HttpClient) {}
-  getAllAreas() {
-    const areasPromise = new Promise((resolve, reject) => {
+  getAllAreas(): Promise<any> {
+    const areasPromise = new Promise<any>((resolve, reject) => {
       const url = this._URL + '/getallarea';
+      console.log('In area services.........==>>> url', url);
       this.httpClient
         .get(url)
         .toPromise()

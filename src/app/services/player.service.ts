@@ -4,13 +4,13 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class PlayerService {
-  // private _URL = 'https://cocascs.herokuapp.com/api';
-  private _URL = 'http://localhost:2786/api';
+  private _URL = 'http://cocascs.herokuapp.com/api';
+  // private _URL = 'http://localhost:2786/api';
   constructor(public httpClient: HttpClient) {}
 
   newPlayer(userData: any) {
-    const url = this._URL + '/newuser';
     const promiseNewPlayer = new Promise((resolve, reject) => {
+      const url = this._URL + '/newuser';
       const HEADERS = {
         headers: { 'Content-Type': 'application/json; charset=utf-8' }
       };

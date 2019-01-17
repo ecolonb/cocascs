@@ -1,9 +1,11 @@
+// import { Promise } from 'es6-promise';
 import { AreaService } from './../services/area.service';
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { PlayerService } from './../services/player.service';
 import { AlertController } from '@ionic/angular';
 import { PopoverController } from '@ionic/angular';
+
 // import { PopoverComponent } from '../../component/popover/popover.component';
 import * as bcrypt from 'bcryptjs';
 @Component({
@@ -35,15 +37,19 @@ export class RegistryPage implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.getAllArea()
-      .then((reultPromise: any) => {
-        console.log('reultPromise: ', reultPromise);
-        this.listAreas = reultPromise.data;
-      })
-      .catch(errc => {
-        // Mostrar alert => { ocurrio un error al cargar lista de categorías }
-        console.log('errc: ', errc);
-      });
+    setTimeout(() => {
+      console.log('ngOnInit========>>>>> TimeOutOK');
+      this.getAllArea()
+        .then((reultPromise: any) => {
+          console.log('reultPromise: ' + JSON.stringify(reultPromise));
+          this.listAreas = reultPromise.data;
+        })
+        .catch(errc => {
+          // Mostrar alert => { ocurrio un error al cargar lista de categorías }
+          console.log('errc=======>>>>: ', errc);
+          console.log('errc=======>>>>: ' + JSON.stringify(errc));
+        });
+    }, 1000);
   }
   _goBack() {
     this.navtCtrl.goBack();
@@ -85,20 +91,23 @@ export class RegistryPage implements OnInit {
   }
 
   // Peticion GET que obtiene el lsitado de las areas
-  getAllArea() {
-    const areasPromise = new Promise((resolve, reject) => {
+  getAllArea(): Promise<any> {
+    return new Promise<any>((resolve, reject) => {
+      console.log('In function   getAllArea() {=>>>>=>>>>>>>>');
       // Para obtener las lista de areas se hace a traves de un servicio (Ahi se realizan todas las peticiones HTTP)
+      console.log('Dentro de la promesa=====>>>>');
       this.areaService
         .getAllAreas()
         .then(result => {
-          this.presentAlert();
+          // this.presentAlert();
           resolve(result);
         })
         .catch(err => {
+          console.log('err=====>>>>: ' + JSON.stringify(err));
           reject(err);
         });
     });
-    return areasPromise;
+    //  return areasPromise;
   }
   async presentAlertConfirm() {
     const alert = await this.alertController.create({
@@ -146,6 +155,7 @@ export class RegistryPage implements OnInit {
     this.playerService
       .validateUserName(this.userData.user.trim())
       .then((response: any) => {
+        console.log('response: ' + JSON.stringify(response));
         const alertElement = document.getElementById(
           'iduserNameValidation'
         ) as HTMLElement;
@@ -155,15 +165,14 @@ export class RegistryPage implements OnInit {
 
         if (response.user_av === false) {
           alertElement.style.display = 'block';
-          alertEmailElement.style.display = 'block';
+          // alertEmailElement.style.display = 'block';
         } else {
           alertElement.style.display = 'none';
-          alertEmailElement.style.display = 'none';
+          // alertEmailElement.style.display = 'none';
         }
-        console.log('Respponse: ', response);
       })
       .catch(err_ => {
-        console.log('Ocurrio un error', err_);
+        console.log('Ocurrio un error' + JSON.stringify(err_));
       });
     return false;
   }
@@ -184,10 +193,10 @@ export class RegistryPage implements OnInit {
         } else {
           alertEmailElement.style.display = 'none';
         }
-        console.log('Respponse: ', response);
+        console.log('Respponse: ' + JSON.stringify(response));
       })
       .catch(err_ => {
-        console.log('Ocurrio un error', err_);
+        console.log('Ocurrio un error' + JSON.stringify(err_));
       });
     return false;
   }
