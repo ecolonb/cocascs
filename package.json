@@ -28,6 +28,7 @@
     "@types/bcryptjs": "^2.4.2",
     "bcrypt": "^3.0.3",
     "bcryptjs": "^2.4.3",
+    "bluebird": "^3.5.3",
     "cordova-android": "7.1.4",
     "cordova-plugin-android-permissions": "1.0.0",
     "cordova-plugin-device": "^2.0.2",
@@ -60,6 +61,8 @@
     "@angular/compiler-cli": "~7.1.4",
     "@angular/language-service": "~7.1.4",
     "@ionic/angular-toolkit": "~1.2.0",
+    "@types/bluebird": "^3.5.25",
+    "@types/core-js": "^0.9.36",
     "@types/jasmine": "~2.8.8",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^10.12.18",
@@ -90,28 +93,6 @@
     },
     "platforms": [
       "android"
-    ],
-    "compilerOptions": {
-      "module": "es2015",
-      "target": "es2015",
-      "lib": [
-        "es2016",
-        "dom"
-      ],
-      "moduleResolution": "node",
-      "noImplicitAny": false,
-      "sourceMap": false,
-      "emitDecoratorMetadata": true,
-      "experimentalDecorators": true,
-      "outDir": "./public/js/app"
-    },
-    "exclude": [
-      "node_modules",
-      "public/js",
-      "assets/app/polyfills.ts"
-    ],
-    "angularCompilerOptions": {
-      "skipMetadataEmit": true
-    }
+    ]
   }
 }

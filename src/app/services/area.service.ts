@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import * as Promise from 'bluebird';
 @Injectable({
   providedIn: 'root'
 })

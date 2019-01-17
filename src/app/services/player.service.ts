@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import * as Promise from 'bluebird';
 @Injectable({
   providedIn: 'root'
 })
@@ -28,7 +29,7 @@ export class PlayerService {
     });
   }
   validateUserName(userName: String): Promise<any> {
-    return new Promise((resolve, reject) => {
+    return new Promise<any>((resolve, reject) => {
       const url = this._URL + '/checkuser/' + userName;
       this.httpClient
         .get(url)
@@ -42,7 +43,7 @@ export class PlayerService {
     });
   }
   validateEmail(email: String): Promise<any> {
-    return new Promise((resolve, reject) => {
+    return new Promise<any>((resolve, reject) => {
       const url = this._URL + '/checkemail/' + email;
       this.httpClient
         .get(url)
