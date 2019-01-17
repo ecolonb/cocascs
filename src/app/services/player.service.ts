@@ -8,8 +8,8 @@ export class PlayerService {
   // private _URL = 'http://localhost:2786/api';
   constructor(public httpClient: HttpClient) {}
 
-  newPlayer(userData: any) {
-    const promiseNewPlayer = new Promise((resolve, reject) => {
+  newPlayer(userData: any): Promise<any> {
+    return new Promise((resolve, reject) => {
       const url = this._URL + '/newuser';
       const HEADERS = {
         headers: { 'Content-Type': 'application/json; charset=utf-8' }
@@ -26,10 +26,9 @@ export class PlayerService {
           reject(err_);
         });
     });
-    return promiseNewPlayer;
   }
-  validateUserName(userName: String) {
-    const promiseValudateUser = new Promise((resolve, reject) => {
+  validateUserName(userName: String): Promise<any> {
+    return new Promise((resolve, reject) => {
       const url = this._URL + '/checkuser/' + userName;
       this.httpClient
         .get(url)
@@ -41,10 +40,9 @@ export class PlayerService {
           reject(err_);
         });
     });
-    return promiseValudateUser;
   }
-  validateEmail(email: String) {
-    const promiseValudateUser = new Promise((resolve, reject) => {
+  validateEmail(email: String): Promise<any> {
+    return new Promise((resolve, reject) => {
       const url = this._URL + '/checkemail/' + email;
       this.httpClient
         .get(url)
@@ -56,6 +54,5 @@ export class PlayerService {
           reject(err_);
         });
     });
-    return promiseValudateUser;
   }
 }

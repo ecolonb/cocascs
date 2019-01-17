@@ -36,20 +36,31 @@ export class RegistryPage implements OnInit {
     public alertController: AlertController
   ) {}
 
-  ngOnInit() {
-    setTimeout(() => {
-      console.log('ngOnInit========>>>>> TimeOutOK');
-      this.getAllArea()
-        .then((reultPromise: any) => {
-          console.log('reultPromise: ' + JSON.stringify(reultPromise));
-          this.listAreas = reultPromise.data;
-        })
-        .catch(errc => {
-          // Mostrar alert => { ocurrio un error al cargar lista de categorías }
-          console.log('errc=======>>>>: ', errc);
-          console.log('errc=======>>>>: ' + JSON.stringify(errc));
-        });
-    }, 1000);
+  ngOnInit() {}
+  // ionViewWillEnter() {
+  //   //  — Fired when entering a page (also if it’s come back from stack)
+  //   console.log('ionViewWillEnter():');
+  // }
+  ionViewDidEnter() {
+    // — Fired after entering (also if it’s come back from stack)
+    this.getAllArea()
+      .then((reultPromise: any) => {
+        this.listAreas = reultPromise.data;
+      })
+      .catch(errc => {
+        // Mostrar alert => { ocurrio un error al cargar lista de categorías }
+      });
+  }
+  ionViewWillLeave() {
+    // — Fired if the page will leaved (also if it’s keep in stack)
+    console.log('ionViewWillLeave():');
+  }
+  ionViewDidLeave() {
+    // — Fired after the page was leaved (also if it’s keep in stack)
+    console.log('ionViewDidLeave():');
+  }
+  ngOnDestroy() {
+    console.log('ngOnDestroy():');
   }
   _goBack() {
     this.navtCtrl.goBack();
@@ -82,20 +93,18 @@ export class RegistryPage implements OnInit {
       .newPlayer(this.userData)
       .then(result => {
         console.log('result: ', result);
-        console.log('User data: ', this.userData);
+        // Validar request OK, user Ok
       })
       .catch(err_ => {
+        // Error reject promise
         console.log('Err_ ', err_);
-        console.log('User data: ', this.userData);
       });
   }
 
   // Peticion GET que obtiene el lsitado de las areas
   getAllArea(): Promise<any> {
     return new Promise<any>((resolve, reject) => {
-      console.log('In function   getAllArea() {=>>>>=>>>>>>>>');
-      // Para obtener las lista de areas se hace a traves de un servicio (Ahi se realizan todas las peticiones HTTP)
-      console.log('Dentro de la promesa=====>>>>');
+      // Para obtener las lista de areas se hace a traves de un servicio (Ahi se realizan todas las peticiones HTTP).
       this.areaService
         .getAllAreas()
         .then(result => {
@@ -103,7 +112,6 @@ export class RegistryPage implements OnInit {
           resolve(result);
         })
         .catch(err => {
-          console.log('err=====>>>>: ' + JSON.stringify(err));
           reject(err);
         });
     });
