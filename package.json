@@ -29,6 +29,7 @@
     "bcrypt": "^3.0.3",
     "bcryptjs": "^2.4.3",
     "bluebird": "^3.5.3",
+    "cordova-android": "7.1.4",
     "cordova-plugin-android-permissions": "1.0.0",
     "cordova-plugin-device": "^2.0.2",
     "cordova-plugin-ionic": "^5.2.10",
@@ -90,6 +91,8 @@
       },
       "cordova-plugin-ionic-keyboard": {}
     },
-    "platforms": []
+    "platforms": [
+      "android"
+    ]
   }
 }

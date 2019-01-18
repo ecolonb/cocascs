@@ -184,7 +184,7 @@ export class RegistryPage implements OnInit {
       });
     return false;
   }
-  validateEmail(event: any): Boolean {
+  validateEmail(): Boolean {
     console.log('Validando el Email: ', this.userData.email);
     if (this.userData.email === '' || this.userData.email == null) {
       return;
